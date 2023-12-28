@@ -1,0 +1,7 @@
+packages\*
+*cache
+*.dbmdl
+*.InUse.config
+*.user
+_ReSharper*
+*.vspscc

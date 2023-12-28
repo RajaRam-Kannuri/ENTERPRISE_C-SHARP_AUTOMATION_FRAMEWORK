@@ -1,0 +1,1091 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "statusId": {
+      "type": "string"
+    },
+    "programId": {
+      "type": "string"
+    },
+    "programName": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "apiKey": {
+      "type": "string"
+    },
+    "householdMembers": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "guardianPersonId": {
+              "type": "integer"
+            },
+            "DOB": {
+              "type": "string"
+            },
+            "financialAssistance": {
+              "type": "boolean"
+            },
+            "personTypeId": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "middleName": {
+              "type": "string"
+            },
+            "preferredName": {
+              "type": "string"
+            },
+            "languageId": {
+              "type": "string"
+            },
+            "maritalStatusId": {
+              "type": "string"
+            },
+            "contactInformation": {
+              "type": "object",
+              "properties": {
+                "primaryEmail": {
+                  "type": "string"
+                },
+                "secondaryEmail": {
+                  "type": "string"
+                },
+                "phoneNumbers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "phoneTypeId": {
+                          "type": "string"
+                        },
+                        "phoneNumber": {
+                          "type": "string"
+                        },
+                        "phoneExt": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "phoneTypeId",
+                        "phoneNumber",
+                        "phoneExt"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "phoneTypeId": {
+                          "type": "string"
+                        },
+                        "phoneNumber": {
+                          "type": "string"
+                        },
+                        "phoneExt": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "phoneTypeId",
+                        "phoneNumber",
+                        "phoneExt"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "phoneTypeId": {
+                          "type": "string"
+                        },
+                        "phoneNumber": {
+                          "type": "string"
+                        },
+                        "phoneExt": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "phoneTypeId",
+                        "phoneNumber",
+                        "phoneExt"
+                      ]
+                    }
+                  ]
+                },
+                "addresses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "addressTypeId": {
+                          "type": "string"
+                        },
+                        "address1": {
+                          "type": "string"
+                        },
+                        "address2": {
+                          "type": "null"
+                        },
+                        "cityId": {
+                          "type": "string"
+                        },
+                        "countyId": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "zip": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "addressTypeId",
+                        "address1",
+                        "address2",
+                        "cityId",
+                        "countyId",
+                        "state",
+                        "zip"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "primaryEmail",
+                "secondaryEmail",
+                "phoneNumbers",
+                "addresses"
+              ]
+            },
+            "communicationConsents": {
+              "type": "array",
+              "items": {}
+            },
+            "communicationPreferences": {
+              "type": "array",
+              "items": {}
+            },
+            "employment": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "employerName": {
+                      "type": "string"
+                    },
+                    "isEmployer": {
+                      "type": "boolean"
+                    },
+                    "employmentRole": {
+                      "type": "string"
+                    },
+                    "income": {
+                      "type": "object",
+                      "properties": {
+                        "incomeId": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "isCheckOrDeposit": {
+                          "type": "boolean"
+                        },
+                        "isCash": {
+                          "type": "boolean"
+                        },
+                        "incomeType": {
+                          "type": "object",
+                          "properties": {
+                            "incomeType": {
+                              "type": "string"
+                            },
+                            "incomeTypeId": {
+                              "type": "string"
+                            },
+                            "sequenceNumber": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "incomeType",
+                            "incomeTypeId",
+                            "sequenceNumber"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "incomeId",
+                        "amount",
+                        "isCheckOrDeposit",
+                        "isCash",
+                        "incomeType"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "employerName",
+                    "isEmployer",
+                    "employmentRole",
+                    "income"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "employerName": {
+                      "type": "string"
+                    },
+                    "isEmployer": {
+                      "type": "boolean"
+                    },
+                    "employmentRole": {
+                      "type": "string"
+                    },
+                    "income": {
+                      "type": "object",
+                      "properties": {
+                        "incomeId": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "isCheckOrDeposit": {
+                          "type": "boolean"
+                        },
+                        "isCash": {
+                          "type": "boolean"
+                        },
+                        "incomeType": {
+                          "type": "object",
+                          "properties": {
+                            "incomeType": {
+                              "type": "string"
+                            },
+                            "incomeTypeId": {
+                              "type": "string"
+                            },
+                            "sequenceNumber": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "incomeType",
+                            "incomeTypeId",
+                            "sequenceNumber"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "incomeId",
+                        "amount",
+                        "isCheckOrDeposit",
+                        "isCash",
+                        "incomeType"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "employerName",
+                    "isEmployer",
+                    "employmentRole",
+                    "income"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "guardianPersonId",
+            "DOB",
+            "financialAssistance",
+            "personTypeId",
+            "firstName",
+            "lastName",
+            "middleName",
+            "preferredName",
+            "languageId",
+            "maritalStatusId",
+            "contactInformation",
+            "communicationConsents",
+            "communicationPreferences",
+            "employment"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "guardianPersonId": {
+              "type": "integer"
+            },
+            "DOB": {
+              "type": "string"
+            },
+            "financialAssistance": {
+              "type": "boolean"
+            },
+            "personTypeId": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "middleName": {
+              "type": "null"
+            },
+            "preferredName": {
+              "type": "null"
+            },
+            "languageId": {
+              "type": "string"
+            },
+            "maritalStatusId": {
+              "type": "string"
+            },
+            "contactInformation": {
+              "type": "object",
+              "properties": {
+                "primaryEmail": {
+                  "type": "string"
+                },
+                "secondaryEmail": {
+                  "type": "string"
+                },
+                "phoneNumbers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "phoneTypeId": {
+                          "type": "string"
+                        },
+                        "phoneNumber": {
+                          "type": "string"
+                        },
+                        "phoneExt": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "phoneTypeId",
+                        "phoneNumber",
+                        "phoneExt"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "phoneTypeId": {
+                          "type": "string"
+                        },
+                        "phoneNumber": {
+                          "type": "string"
+                        },
+                        "phoneExt": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "phoneTypeId",
+                        "phoneNumber",
+                        "phoneExt"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "phoneTypeId": {
+                          "type": "string"
+                        },
+                        "phoneNumber": {
+                          "type": "string"
+                        },
+                        "phoneExt": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "phoneTypeId",
+                        "phoneNumber",
+                        "phoneExt"
+                      ]
+                    }
+                  ]
+                },
+                "addresses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "addressTypeId": {
+                          "type": "string"
+                        },
+                        "address1": {
+                          "type": "string"
+                        },
+                        "address2": {
+                          "type": "null"
+                        },
+                        "cityId": {
+                          "type": "string"
+                        },
+                        "countyId": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "zip": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "addressTypeId",
+                        "address1",
+                        "address2",
+                        "cityId",
+                        "countyId",
+                        "state",
+                        "zip"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "primaryEmail",
+                "secondaryEmail",
+                "phoneNumbers",
+                "addresses"
+              ]
+            },
+            "communicationConsents": {
+              "type": "array",
+              "items": {}
+            },
+            "communicationPreferences": {
+              "type": "array",
+              "items": {}
+            },
+            "employment": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "employerName": {
+                      "type": "string"
+                    },
+                    "isEmployer": {
+                      "type": "boolean"
+                    },
+                    "employmentRole": {
+                      "type": "string"
+                    },
+                    "income": {
+                      "type": "object",
+                      "properties": {
+                        "incomeId": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "isCheckOrDeposit": {
+                          "type": "boolean"
+                        },
+                        "isCash": {
+                          "type": "boolean"
+                        },
+                        "incomeType": {
+                          "type": "object",
+                          "properties": {
+                            "incomeType": {
+                              "type": "string"
+                            },
+                            "incomeTypeId": {
+                              "type": "string"
+                            },
+                            "sequenceNumber": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "incomeType",
+                            "incomeTypeId",
+                            "sequenceNumber"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "incomeId",
+                        "amount",
+                        "isCheckOrDeposit",
+                        "isCash",
+                        "incomeType"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "employerName",
+                    "isEmployer",
+                    "employmentRole",
+                    "income"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "guardianPersonId",
+            "DOB",
+            "financialAssistance",
+            "personTypeId",
+            "firstName",
+            "lastName",
+            "middleName",
+            "preferredName",
+            "languageId",
+            "maritalStatusId",
+            "contactInformation",
+            "communicationConsents",
+            "communicationPreferences",
+            "employment"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "guardianPersonId": {
+              "type": "integer"
+            },
+            "DOB": {
+              "type": "string"
+            },
+            "financialAssistance": {
+              "type": "boolean"
+            },
+            "personTypeId": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "middleName": {
+              "type": "null"
+            },
+            "preferredName": {
+              "type": "null"
+            },
+            "languageId": {
+              "type": "string"
+            },
+            "maritalStatusId": {
+              "type": "null"
+            },
+            "contactInformation": {
+              "type": "object",
+              "properties": {
+                "phoneNumbers": {
+                  "type": "array",
+                  "items": {}
+                },
+                "addresses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "addressTypeId": {
+                          "type": "string"
+                        },
+                        "address1": {
+                          "type": "string"
+                        },
+                        "address2": {
+                          "type": "null"
+                        },
+                        "cityId": {
+                          "type": "string"
+                        },
+                        "countyId": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "zip": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "addressTypeId",
+                        "address1",
+                        "address2",
+                        "cityId",
+                        "countyId",
+                        "state",
+                        "zip"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "phoneNumbers",
+                "addresses"
+              ]
+            },
+            "communicationConsents": {
+              "type": "array",
+              "items": {}
+            },
+            "communicationPreferences": {
+              "type": "array",
+              "items": {}
+            },
+            "employment": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "guardianPersonId",
+            "DOB",
+            "financialAssistance",
+            "personTypeId",
+            "firstName",
+            "lastName",
+            "middleName",
+            "preferredName",
+            "languageId",
+            "maritalStatusId",
+            "contactInformation",
+            "communicationConsents",
+            "communicationPreferences",
+            "employment"
+          ]
+        }
+      ]
+    },
+    "students": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "DOB": {
+              "type": "string"
+            },
+            "genderId": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "middleName": {
+              "type": "null"
+            },
+            "ethnicityId": {
+              "type": "string"
+            },
+            "diagnosisId": {
+              "type": "null"
+            },
+            "isMilitaryDependent": {
+              "type": "boolean"
+            },
+            "SSN": {
+              "type": "string"
+            },
+            "isFosterChild": {
+              "type": "boolean"
+            },
+            "outOfHomeCare": {
+              "type": "boolean"
+            },
+            "isAdoptedChild": {
+              "type": "boolean"
+            },
+            "scholarships": {
+              "type": "array",
+              "items": {}
+            },
+            "continueScholarship": {
+              "type": "boolean"
+            },
+            "gradeLevelId": {
+              "type": "string"
+            },
+            "documents": {
+              "type": "array",
+              "items": {}
+            },
+            "sendInvitation": {
+              "type": "boolean"
+            },
+            "relationshipToGuardianId": {
+              "type": "string"
+            },
+            "previousSchool": {
+              "type": "object",
+              "properties": {
+                "DOECode": {
+                  "type": "string"
+                },
+                "schoolTypeId": {
+                  "type": "string"
+                },
+                "schoolComplianceProgramType": {
+                  "type": "string"
+                },
+                "districtId": {
+                  "type": "integer"
+                },
+                "currentCountyDistrictId": {
+                  "type": "integer"
+                },
+                "religiousStatus": {
+                  "type": "null"
+                },
+                "accreditationStatus": {
+                  "type": "null"
+                },
+                "nonprofitStatus": {
+                  "type": "null"
+                },
+                "complianceDate": {
+                  "type": "string"
+                },
+                "countyId": {
+                  "type": "string"
+                },
+                "schoolYear": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "DOECode",
+                "schoolTypeId",
+                "schoolComplianceProgramType",
+                "districtId",
+                "currentCountyDistrictId",
+                "religiousStatus",
+                "accreditationStatus",
+                "nonprofitStatus",
+                "complianceDate",
+                "countyId",
+                "schoolYear"
+              ]
+            },
+            "plannedSchool": {
+              "type": "object",
+              "properties": {
+                "DOECode": {
+                  "type": "string"
+                },
+                "schoolTypeId": {
+                  "type": "string"
+                },
+                "schoolComplianceProgramType": {
+                  "type": "string"
+                },
+                "districtId": {
+                  "type": "integer"
+                },
+                "currentCountyDistrictId": {
+                  "type": "integer"
+                },
+                "religiousStatus": {
+                  "type": "null"
+                },
+                "accreditationStatus": {
+                  "type": "null"
+                },
+                "nonprofitStatus": {
+                  "type": "null"
+                },
+                "complianceDate": {
+                  "type": "string"
+                },
+                "countyId": {
+                  "type": "string"
+                },
+                "schoolYear": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "DOECode",
+                "schoolTypeId",
+                "schoolComplianceProgramType",
+                "districtId",
+                "currentCountyDistrictId",
+                "religiousStatus",
+                "accreditationStatus",
+                "nonprofitStatus",
+                "complianceDate",
+                "countyId",
+                "schoolYear"
+              ]
+            }
+          },
+          "required": [
+            "DOB",
+            "genderId",
+            "firstName",
+            "lastName",
+            "middleName",
+            "ethnicityId",
+            "diagnosisId",
+            "isMilitaryDependent",
+            "SSN",
+            "isFosterChild",
+            "outOfHomeCare",
+            "isAdoptedChild",
+            "scholarships",
+            "continueScholarship",
+            "gradeLevelId",
+            "documents",
+            "sendInvitation",
+            "relationshipToGuardianId",
+            "previousSchool",
+            "plannedSchool"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "DOB": {
+              "type": "string"
+            },
+            "genderId": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "middleName": {
+              "type": "null"
+            },
+            "ethnicityId": {
+              "type": "string"
+            },
+            "diagnosisId": {
+              "type": "null"
+            },
+            "isMilitaryDependent": {
+              "type": "boolean"
+            },
+            "SSN": {
+              "type": "string"
+            },
+            "isFosterChild": {
+              "type": "boolean"
+            },
+            "outOfHomeCare": {
+              "type": "boolean"
+            },
+            "isAdoptedChild": {
+              "type": "boolean"
+            },
+            "scholarships": {
+              "type": "array",
+              "items": {}
+            },
+            "continueScholarship": {
+              "type": "boolean"
+            },
+            "gradeLevelId": {
+              "type": "string"
+            },
+            "documents": {
+              "type": "array",
+              "items": {}
+            },
+            "sendInvitation": {
+              "type": "boolean"
+            },
+            "relationshipToGuardianId": {
+              "type": "string"
+            },
+            "previousSchool": {
+              "type": "object",
+              "properties": {
+                "DOECode": {
+                  "type": "string"
+                },
+                "schoolTypeId": {
+                  "type": "string"
+                },
+                "schoolComplianceProgramType": {
+                  "type": "string"
+                },
+                "districtId": {
+                  "type": "integer"
+                },
+                "currentCountyDistrictId": {
+                  "type": "integer"
+                },
+                "religiousStatus": {
+                  "type": "null"
+                },
+                "accreditationStatus": {
+                  "type": "null"
+                },
+                "nonprofitStatus": {
+                  "type": "null"
+                },
+                "complianceDate": {
+                  "type": "string"
+                },
+                "countyId": {
+                  "type": "string"
+                },
+                "schoolYear": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "DOECode",
+                "schoolTypeId",
+                "schoolComplianceProgramType",
+                "districtId",
+                "currentCountyDistrictId",
+                "religiousStatus",
+                "accreditationStatus",
+                "nonprofitStatus",
+                "complianceDate",
+                "countyId",
+                "schoolYear"
+              ]
+            },
+            "plannedSchool": {
+              "type": "object",
+              "properties": {
+                "DOECode": {
+                  "type": "string"
+                },
+                "schoolTypeId": {
+                  "type": "string"
+                },
+                "schoolComplianceProgramType": {
+                  "type": "string"
+                },
+                "districtId": {
+                  "type": "integer"
+                },
+                "currentCountyDistrictId": {
+                  "type": "integer"
+                },
+                "religiousStatus": {
+                  "type": "null"
+                },
+                "accreditationStatus": {
+                  "type": "null"
+                },
+                "nonprofitStatus": {
+                  "type": "null"
+                },
+                "complianceDate": {
+                  "type": "string"
+                },
+                "countyId": {
+                  "type": "string"
+                },
+                "schoolYear": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "DOECode",
+                "schoolTypeId",
+                "schoolComplianceProgramType",
+                "districtId",
+                "currentCountyDistrictId",
+                "religiousStatus",
+                "accreditationStatus",
+                "nonprofitStatus",
+                "complianceDate",
+                "countyId",
+                "schoolYear"
+              ]
+            }
+          },
+          "required": [
+            "DOB",
+            "genderId",
+            "firstName",
+            "lastName",
+            "middleName",
+            "ethnicityId",
+            "diagnosisId",
+            "isMilitaryDependent",
+            "SSN",
+            "isFosterChild",
+            "outOfHomeCare",
+            "isAdoptedChild",
+            "scholarships",
+            "continueScholarship",
+            "gradeLevelId",
+            "documents",
+            "sendInvitation",
+            "relationshipToGuardianId",
+            "previousSchool",
+            "plannedSchool"
+          ]
+        }
+      ]
+    },
+    "errors": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "id",
+    "statusId",
+    "programId",
+    "programName",
+    "state",
+    "apiKey",
+    "householdMembers",
+    "students",
+    "errors"
+  ]
+}
+

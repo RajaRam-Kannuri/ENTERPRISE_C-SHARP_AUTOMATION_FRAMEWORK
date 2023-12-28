@@ -1,0 +1,109 @@
+﻿<Window x:Class="KWDT.UI.UserControls.AddEditStepWizard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KWDT.UI.UserControls"
+             mc:Ignorable="d"
+             WindowStyle="ToolWindow"
+             ResizeMode="NoResize"
+             WindowStartupLocation="CenterScreen"
+             Height="550"
+             Width="340"
+             d:DesignHeight="470" d:DesignWidth="400">
+    <!--<Window.Resources>
+        --><!--<local:ProgramConfigurationToDisplayNameConverter x:Key="PrettyProgramName" />--><!--
+    </Window.Resources>-->
+    <Grid 
+        Margin="10">
+        <StackPanel 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Width="220" 
+            Height="455">
+            <Label 
+                Content="Select a program"/>
+            <ComboBox 
+                Name="program"
+                DisplayMemberPath="DisplayName"
+                SelectedValuePath="Key"
+                SelectionChanged="program_SelectionChanged"/>
+            <Label 
+                Content="Select a page"/>
+            <ComboBox 
+                Name="entity" 
+                SelectedItem="{Binding Entity}" 
+                SelectionChanged="entity_SelectionChanged" 
+                IsEnabled="False"/>
+            <Label 
+                Content="Select an element"/>
+            <ComboBox 
+                Name="element" 
+                SelectedItem="{Binding Element}" 
+                SelectionChanged="element_SelectionChanged" 
+                IsEnabled="False"/>
+            <Label 
+                Content="Select an action"/>
+            <ComboBox 
+                Name="action" 
+                SelectedItem="{Binding Action}" 
+                SelectionChanged="action_SelectionChanged" 
+                IsEnabled="False"/>
+            <Label 
+                Content="Enter primary data for the action"/>
+            <TextBox 
+                Name="data" 
+                Text="{Binding Data}" 
+                IsEnabled="False"/>
+            <Label 
+                Content="Enter secondary data if required"/>
+            <TextBox 
+                Name="data2" 
+                Text="{Binding Data2}" 
+                IsEnabled="False"/>
+            <Button 
+                Margin="0,10,60,0" 
+                Name="viewGlobalVariables" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="View Available Variables" 
+                Click="viewVariables_Click" 
+                IsEnabled="True"/>
+            <CheckBox 
+                x:Name="saveAsGlobalVariable" 
+                Content="Save value as global variable" 
+                Margin="0,10,0,0" 
+                IsChecked="{Binding SaveVariable}" 
+                IsEnabled="False"/>
+            <Label 
+                Content="Enter name for global variable"/>
+            <TextBox 
+                Name="globalVariableName" 
+                Text="{Binding VariableName}" 
+                IsEnabled="False"/>
+            <Label 
+                Content="Enter notes (optional)"/>
+            <TextBox 
+                x:Name="note" 
+                Text="{Binding Note}"/>
+        </StackPanel>
+        <UniformGrid 
+            Height="30" 
+            VerticalAlignment="Bottom" 
+            Rows="1" 
+            Margin="0,10,0,0">
+            <Button 
+                Margin="20,0" 
+                Name="saveAddEdit" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Add" 
+                Click="saveAddEdit_Click" 
+                IsEnabled="False"/>
+            <Button 
+                Margin="20,0" 
+                Name="cancelAddEdit" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Cancel" 
+                Click="cancelAddEdit_Click"/>
+        </UniformGrid>
+    </Grid>
+</Window>

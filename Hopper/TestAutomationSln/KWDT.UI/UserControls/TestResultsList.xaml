@@ -1,0 +1,108 @@
+﻿<local:ListPage x:Class="KWDT.UI.UserControls.TestResultsList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KWDT.UI.UserControls"
+             mc:Ignorable="d"
+             d:DesignHeight="750" d:DesignWidth="1050">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:TitleBar Grid.Row="0" x:Name="ucTitleBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" TitleBarHome="TitleBar_OnTitleBarHome" TitleBarBack="TitleBar_OnTitleBarBack"/>
+        <Grid Grid.Row="1" Margin="10,0">
+            <TextBox 
+                x:Name="nameFilter" 
+                HorizontalAlignment="Left" 
+                Height="25" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Center" 
+                Width="350" 
+                Text="{Binding resultNameFilter}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Filter by name or type..." Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button 
+                x:Name="searchResultName" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Search" 
+                HorizontalAlignment="Left"
+                Margin="360,0,0,0" 
+                VerticalAlignment="Center" 
+                Width="85" 
+                Click="SearchResultName_Click"/>
+            <Button 
+                x:Name="clearSearchResultName" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Clear Search" 
+                HorizontalAlignment="Left" 
+                Margin="455,0,0,0" 
+                VerticalAlignment="Center" 
+                Width="85" 
+                Click="ClearSearchResultName_Click"/>
+        </Grid>
+        <DockPanel 
+            Grid.Row="2"
+            Margin="0,0,0,50">
+            <ListView 
+                x:Name="testResults" 
+                Margin="10,0" 
+                ItemsSource="{Binding TestResults}" 
+                IsVisibleChanged="TestResults_OnIsVisibleChanged" 
+                MouseDoubleClick="testResults_MouseDoubleClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn 
+                        Header="Name" 
+                        DisplayMemberBinding="{Binding Name}" Width="680"/>
+                        <GridViewColumn 
+                        Header="Type" 
+                        Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock 
+                                    Text="{Binding TestType}" 
+                                    TextAlignment="Center" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn 
+                        Header="Date Modified" 
+                        Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock 
+                                    Text="{Binding DateModified}" 
+                                    TextAlignment="Center" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</local:ListPage>

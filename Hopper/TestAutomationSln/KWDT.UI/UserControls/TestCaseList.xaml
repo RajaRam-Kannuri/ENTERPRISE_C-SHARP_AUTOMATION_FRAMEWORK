@@ -1,0 +1,257 @@
+﻿<local:ListPage x:Class="KWDT.UI.UserControls.TestCaseList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KWDT.UI.UserControls"
+             mc:Ignorable="d"
+             d:DesignHeight="750" d:DesignWidth="1050">
+    <local:ListPage.Resources>
+        <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </local:ListPage.Resources>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <local:TitleBar Grid.Row="0" x:Name="ucTitleBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" TitleBarHome="TitleBar_OnTitleBarHome" TitleBarBack="TitleBar_OnTitleBarBack"/>
+        <Grid Grid.Row="1" Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button 
+                Grid.Column="1"
+                x:Name="searchCaseName" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Search" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,0" 
+                VerticalAlignment="Center" 
+                Width="85" 
+                Click="SearchCaseName_Click"/>
+            <Button 
+                x:Name="clearSearchCaseName"
+                Style="{StaticResource actionButtonStyle}"
+                Content="Clear Search" 
+                HorizontalAlignment="Right"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                Width="85" 
+                Click="ClearSearchCaseName_Click" 
+                Grid.Column="1"/>
+            <TextBox 
+                Grid.Column="0" 
+                x:Name="nameFilter" 
+                HorizontalAlignment="Left" 
+                Height="25" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Center" 
+                Width="350" 
+                Text="{Binding caseNameFilter}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Search by name..." Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+        </Grid>
+        <Grid 
+            Grid.Row="2" 
+            Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="650"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton
+                x:Name="AllRadio" 
+                GroupName="program"
+                Content="Show all" 
+                IsChecked="True"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" Margin="0,8" 
+                />
+            <RadioButton
+                x:Name="FTCRadio" 
+                GroupName="program"
+                Content="FTC" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="70,8,0,8"
+                />
+            <RadioButton
+                x:Name="GardinerRadio" 
+                GroupName="program"
+                Content="Gardiner" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="120,8,0,8"
+                />
+            <RadioButton
+                x:Name="TLERadio" 
+                GroupName="program"
+                Content="TLE" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="195,8,0,8"
+                />
+            <RadioButton
+                x:Name="MyScholarShopRadio" 
+                GroupName="program"
+                Content="MyScholarShop" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="243,12,0,12"
+                />
+            <RadioButton
+                x:Name="EpicoreRadio" 
+                GroupName="program"
+                Content="Epicore" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="355,12,0,12"
+                />
+            <!--<CheckBox
+                x:Name="SharedStepCheckBox" 
+                Content="Show only shared steps" 
+                IsChecked="False"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="370,0"
+                />-->
+            <Button 
+                x:Name="filterButton"
+                Style="{StaticResource actionButtonStyle}"
+                Content="Filter" 
+                HorizontalAlignment="Left"
+                Margin="455,8,0,8"
+                VerticalAlignment="Center"
+                Width="85" 
+                Click="FilterTestCaseList_Click" Height="24"/>
+            <Button 
+                Grid.Column="1"
+                x:Name="addNewTestCase" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Create New Test Case" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center" 
+                Width="160" 
+                Click="addNewTestCase_Click"/>
+        </Grid>
+        <DockPanel 
+            Grid.Row="3">
+            <ListView 
+                x:Name="testCases" 
+                Margin="10,0" 
+                ItemsSource="{Binding TestSteps}" 
+                IsVisibleChanged="TestCases_OnIsVisibleChanged" 
+                MouseDoubleClick="testCases_MouseDoubleClick" SelectionChanged="TestCases_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel 
+                                    Orientation="Horizontal">
+                                        <Button 
+                                        Style="{DynamicResource NoChromeButton}" 
+                                        Click="DeleteCase_Click" 
+                                        Cursor="Hand" 
+                                        ToolTip="Delete test case">
+                                            <Image 
+                                            Width="16" 
+                                            Height="16" 
+                                            Source="/Images/appbar.delete.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel 
+                                    Orientation="Horizontal">
+                                        <Button 
+                                        Style="{DynamicResource NoChromeButton}" 
+                                        Click="CopyCase_Click" 
+                                        Cursor="Hand" 
+                                        ToolTip="Create copy of test case" 
+                                        Margin="10,0,10,0">
+                                            <Image 
+                                            Width="16" 
+                                            Height="16" 
+                                            Source="/Images/copy-icon.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Status" 
+                                    DisplayMemberBinding="{Binding Status}"
+                                    Width="120"/>
+                        <GridViewColumn Header="Program" 
+                                    DisplayMemberBinding="{Binding Program}"
+                                    Width="120"/>
+                        <GridViewColumn Header="Name" 
+                                    Width="600"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+        <Grid 
+            Grid.Row="4" 
+            Margin="10,0">
+            <Label 
+                x:Name="testCount" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Content="Test Count"/>
+        </Grid>
+    </Grid>
+</local:ListPage>

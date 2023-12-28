@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8A86A01-F7B4-4852-9DFF-04D8CCC8A09D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PageMinders</RootNamespace>
+    <AssemblyName>PageMinders</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenQA.Selenium.Winium, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenQA.Selenium.Winium.1.0.0.4\lib\OpenQA.Selenium.Winium.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PowerBIMinderGenerated.cs">
+      <DependentUpon>PowerBIMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PowerBIMinder.cs" />
+    <Compile Include="PortalMinderGenerated.cs">
+      <DependentUpon>PortalMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PortalMinder.cs" />
+    <Compile Include="ReadingMinderGenerated.cs">
+      <DependentUpon>ReadingMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReadingMinder.cs" />
+    <Compile Include="FTC_OLAMinderGenerated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FTC_OLAMinderGenerated.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyScholarShopMinderGenerated.cs">
+      <DependentUpon>MyScholarShopMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MyScholarShopMinder.cs" />
+    <Compile Include="MinderFactory.cs" />
+    <Compile Include="FTC_OLAMinder.cs" />
+    <Compile Include="FTC_PLIMinder.cs" />
+    <Compile Include="FTC_PLIMinderGenerated.cs">
+      <DependentUpon>FTC_PLIMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GAR_PLIMinder.cs" />
+    <Compile Include="GAR_PLIMinderGenerated.cs">
+      <DependentUpon>GAR_PLIMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GAR_ProviderMinder.cs" />
+    <Compile Include="GAR_ProviderMinderGenerated.cs">
+      <DependentUpon>GAR_ProviderMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GAR_SASMinder.cs" />
+    <Compile Include="GAR_SASMinderGenerated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GAR_SASMinderGenerated.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FTC_SASMinder.cs" />
+    <Compile Include="FTC_SASMinderGenerated.cs">
+      <DependentUpon>FTC_SASMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FTC_SLIMinder.cs" />
+    <Compile Include="FTC_SLIMinderGenerated.cs">
+      <DependentUpon>FTC_SLIMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="TLEMinder.cs" />
+    <Compile Include="TLEMinderGenerated.cs">
+      <DependentUpon>TLEMinderGenerated.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="FTC_PLIMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FTC_PLIMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GAR_PLIMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GAR_PLIMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GAR_ProviderMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GAR_ProviderMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GAR_SASMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GAR_SASMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FTC_SASMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FTC_SASMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="FTC_SLIMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FTC_SLIMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TLEMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TLEMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutomationFramework\AutomationFramework.csproj">
+      <Project>{0f2a37aa-8912-4755-8f76-17329c5258b7}</Project>
+      <Name>AutomationFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FTC.OLA.Automation.Pages\FTC.OLA.Automation.Pages.csproj">
+      <Project>{74cecffa-88fc-457c-929d-19cffbbc5574}</Project>
+      <Name>FTC.OLA.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FTC.SAS.Automation.Pages\FTC.SAS.Automation.Pages.csproj">
+      <Project>{25746e67-54b6-4280-aa72-63ae21d135eb}</Project>
+      <Name>FTC.SAS.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GAR.PLI.Automation.Pages\GAR.PLI.Automation.Pages.csproj">
+      <Project>{07a4cf08-e0ef-4c55-aaa8-27604530323f}</Project>
+      <Name>GAR.PLI.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GAR.Provider.Automation.Pages\GAR.Provider.Automation.Pages.csproj">
+      <Project>{b195342a-2b86-4849-862a-399eac3f8ebd}</Project>
+      <Name>GAR.Provider.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GAR.SAS.Automation.Pages\GAR.SAS.Automation.Pages.csproj">
+      <Project>{95a1a09d-6733-4778-ac62-29910ee0f45e}</Project>
+      <Name>GAR.SAS.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KWDT.Core\KWDT.Core.csproj">
+      <Project>{159019db-39b1-449f-a7be-0bf4e152ecd3}</Project>
+      <Name>KWDT.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyScholarShop.Automation.Pages\MyScholarShop.Automation.Pages.csproj">
+      <Project>{c8a13ef9-c122-453c-b53c-70c0ce044be0}</Project>
+      <Name>MyScholarShop.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PLI.Automation.Pages\FTC.PLI.Automation.Pages.csproj">
+      <Project>{1ef7bc97-b923-44de-b0da-beacd5cc1598}</Project>
+      <Name>FTC.PLI.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portal.Automation.Pages\Portal.Automation.Pages.csproj">
+      <Project>{61ab4f23-7f1d-4334-a7df-cde7c0b6b2e9}</Project>
+      <Name>Portal.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PowerBI.Automation.Pages\PowerBI.Automation.Pages.csproj">
+      <Project>{1db05843-99ff-49db-96bc-187139676971}</Project>
+      <Name>PowerBI.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reading.Automation.Pages\Reading.Automation.Pages.csproj">
+      <Project>{61e81ac1-97ac-4b80-b24b-2b30e4f57bfb}</Project>
+      <Name>Reading.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLI.Automation.Pages\FTC.SLI.Automation.Pages.csproj">
+      <Project>{512fcf09-81c2-4526-bd96-1c0e859a1e26}</Project>
+      <Name>FTC.SLI.Automation.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TLE.Automation.Pages\TLE.Automation.Pages.csproj">
+      <Project>{c92029ea-7760-4e07-881f-eb4c40e34e63}</Project>
+      <Name>TLE.Automation.Pages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FTC_OLAMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FTC_OLAMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MyScholarShopMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MyScholarShopMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadingMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ReadingMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PortalMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PortalMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PowerBIMinderGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PowerBIMinderGenerated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

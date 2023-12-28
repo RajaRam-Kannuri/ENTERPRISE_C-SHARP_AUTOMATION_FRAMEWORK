@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Applications\EMA\PageObject\API\**" />
+    <Compile Remove="Applications\EMA\Suite\XMLs\**" />
+    <Compile Remove="Application\**" />
+    <EmbeddedResource Remove="Applications\EMA\PageObject\API\**" />
+    <EmbeddedResource Remove="Applications\EMA\Suite\XMLs\**" />
+    <EmbeddedResource Remove="Application\**" />
+    <None Remove="Applications\EMA\PageObject\API\**" />
+    <None Remove="Applications\EMA\Suite\XMLs\**" />
+    <None Remove="Application\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="IKVM" Version="8.7.1" />
+    <PackageReference Include="Legerity.Android" Version="0.14.0" />
+    <PackageReference Include="mailslurp" Version="15.17.17" />
+    <PackageReference Include="mailslurp_netstandard_2x" Version="15.17.22" />
+    <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.205.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+	  <PackageReference Include="Microsoft.NET.Test.SDK" Version="17.8.0" />
+    <PackageReference Include="coverlet.collector" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NodaTime" Version="3.1.9" />
+    <PackageReference Include="NPOI" Version="2.6.2" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="Ocelot" Version="20.0.0" />
+    <PackageReference Include="ReportUnit" Version="1.5.0-beta1" />
+    <PackageReference Include="RestClient" Version="3.1024.23771" />
+    <PackageReference Include="Selenium.Support" Version="4.15.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.15.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="119.0.6045.10500" />
+    <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.33.0" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="119.0.2151.42" />
+    <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
+    <PackageReference Include="ServiceStack" Version="6.11.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Applications\SAS\" />
+    <Folder Include="Applications\EMA\PageObject\SidePanel\Dashboard\My_Application\" />
+    <Folder Include="Applications\EMA\PageObject\SidePanel\Dashboard\My_Students\" />
+    <Folder Include="Applications\EMA\Suite\TestScripts\SidePanel\Dashboard\My Applications\" />
+    <Folder Include="Applications\EMA\Suite\TestScripts\SidePanel\Dashboard\My Students\" />
+    <Folder Include="Resources\Account Records\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Client">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\ServiceStack.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlClient">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XmlDocument">
+      <HintPath>..\..\..\Development\NLPLogix\ELetting.ServiceModel\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

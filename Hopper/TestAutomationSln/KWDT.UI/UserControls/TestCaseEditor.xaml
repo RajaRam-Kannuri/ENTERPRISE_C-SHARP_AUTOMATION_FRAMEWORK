@@ -1,0 +1,437 @@
+﻿<local:EditorPage x:Class="KWDT.UI.UserControls.TestCaseEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KWDT.UI.UserControls"
+             mc:Ignorable="d"
+             d:DesignHeight="750" d:DesignWidth="1050">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <local:TitleBar 
+            Grid.Row="0" 
+            x:Name="ucTitleBar" 
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Top" 
+            TitleBarHome="TitleBar_OnTitleBarHome" 
+            TitleBarBack="TitleBar_OnTitleBarBack"/>
+        <Grid 
+            Grid.Row="1" 
+            Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition 
+                    Width="2*"/>
+                <ColumnDefinition 
+                    Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label 
+                x:Name="nameLabel" 
+                Content="Name" 
+                Grid.Column="0" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"/>
+            <TextBox 
+                Grid.Column="0" 
+                x:Name="caseName" 
+                HorizontalAlignment="Stretch" 
+                Margin="0,25,30,0"
+                Height="25" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Text="{Binding Name}"/>
+            <Label 
+                Grid.Column="1" 
+                x:Name="descriptionLabel" 
+                Content="Description (optional)" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"/>
+            <TextBox 
+                Grid.Column="1"
+                x:Name="caseDescription" 
+                HorizontalAlignment="Stretch" 
+                Margin="0,25,0,0"
+                Height="80" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Text="{Binding Description}"/>
+            <Label
+                x:Name="TestPointidLabel"
+                Content="Test Point ID"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,250,0"
+                FontSize="14"
+                IsEnabled="True"
+                Height="25" Grid.Column="1" Width="92"/>
+            <TextBox
+                x:Name="TestPointid"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,170,0"
+                Width="84"
+                IsEnabled="True" 
+                Grid.RowSpan="1"
+                Text="{Binding TestPointID}"/>
+            <Label
+                x:Name="TestPlanidLabel"
+                Content="Test Plan ID"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,80,0"
+                FontSize="14"
+                IsEnabled="True"
+                Height="25"/>
+            <TextBox
+                x:Name="TestPlanid"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,0,0"
+                Width="80"
+                IsEnabled="True" 
+                Grid.RowSpan="1"
+                Text="{Binding TestPlanID}"/>
+            <Label 
+                x:Name="programLabel" 
+                Content="Program" 
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="0,60,0,0"/>
+            <ComboBox 
+                x:Name="caseProgram"  
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"  
+                Grid.Column="0"
+                Margin="0,85,0,0"
+                Width="120" 
+                ItemsSource="{Binding Programs}" 
+                SelectedItem="{Binding Program}" 
+                Height="25"/>
+            <Label 
+                x:Name="statusLabel" 
+                Content="Status"
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"  
+                Margin="130,60,0,0"/>
+            <ComboBox 
+                x:Name="caseStatus" 
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                Margin="130,85,0,0"
+                VerticalAlignment="Top" 
+                Width="120" 
+                ItemsSource="{Binding Statuses}" 
+                SelectedItem="{Binding Status}" 
+                Height="25"/>
+            <Label 
+                x:Name="environmentLabel" 
+                Content="Test Environment" 
+                HorizontalAlignment="Left"  
+                Grid.Column="0"
+                VerticalAlignment="Top" 
+                Margin="260,60,0,0"/>
+            <ComboBox 
+                x:Name="caseEnvironment"  
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Margin="260,85,0,0"
+                Width="120" 
+                ItemsSource="{Binding Environments}" 
+                SelectedItem="{Binding Environment}" 
+				Height="25"/>
+            <Label 
+                x:Name="serverEnvironmentLabel" 
+                Content="Server Environment" 
+                HorizontalAlignment="Left"  
+                Grid.Column="0"
+                VerticalAlignment="Top" 
+                Margin="390,60,0,0"/>
+            <ComboBox 
+                x:Name="caseServerEnvironment"  
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Margin="390,85,0,0"
+                Width="120" 
+                ItemsSource="{Binding ServerEnvironments}" 
+                SelectedItem="{Binding ServerEnvironment}" 
+				Height="25"/>
+            <Label 
+                x:Name="browserLabel" 
+                Content="Browser" 
+                HorizontalAlignment="Left"  
+                Grid.Column="0"
+                VerticalAlignment="Top" 
+                Margin="520,60,0,0"/>
+            <ComboBox 
+                x:Name="caseBrowser"  
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Margin="520,85,0,0"
+                Width="120" 
+                ItemsSource="{Binding Browsers}" 
+                SelectedItem="{Binding Browser}"
+				Height="25"/>
+        </Grid>
+        <Grid 
+            Grid.Row="2" 
+            Margin="10,0">
+            <Button 
+                x:Name="addNewTestStep" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Add New Test Step" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom" 
+                Width="125"
+                Click="addTestStep_Click"/>
+            <Button 
+                x:Name="addSharedTestStep"
+                Style="{StaticResource actionButtonStyle}"
+                Content="Add Shared Test Step" 
+                HorizontalAlignment="Left" 
+                Margin="135,0,0,0" 
+                VerticalAlignment="Bottom" 
+                Width="125" 
+                Click="addSharedTestStep_Click"/>
+
+            <local:EditorButtons 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right"
+                EditorSave="EditorButtons_EditorSave" 
+                EditorSaveCopy="EditorButtons_EditorSaveCopy" 
+                EditorDelete="EditorButtons_EditorDelete" 
+                EditorExport="EditorButtons_EditorExport" 
+                Width="125"/>
+        </Grid>
+        <DockPanel 
+            Grid.Row="3"
+            Margin="10,10,10,0">
+            <ListView 
+				x:Name="testSteps" 
+				HorizontalAlignment="Stretch" 
+				VerticalAlignment="Stretch" 
+				ItemsSource="{Binding TestSteps}" 
+                GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"
+				MouseDoubleClick="EditStep_Click">
+
+
+                <!--<ListView.ItemContainerStyle>
+					<Style TargetType="{x:Type ListViewItem}">
+						<Setter Property="BorderBrush" Value="LightGray" />
+						<Setter Property="BorderThickness" Value="0,0,0,1" />
+					</Style>
+				</ListView.ItemContainerStyle>-->
+
+                <ListView.Resources>
+                    <local:IntegerToVisibilityMultiConverterForDelete 
+                        x:Key="IntegerToVisibilityMultiConverterForDelete"/>
+                    <local:IntegerToVisibilityMultiConverterForUpArrow 
+                        x:Key="IntegerToVisibilityMultiConverterForUpArrow"/>
+                    <local:IntegerToVisibilityMultiConverterForDownArrow 
+                        x:Key="IntegerToVisibilityMultiConverterForDownArrow"/>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn 
+                            Header="Delete" 
+                            Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox 
+                                        Name="DeleteStep" 
+                                        IsChecked="{Binding Delete}" 
+                                        ToolTip="Select step for deletion">
+                                        <CheckBox.Visibility>
+                                            <MultiBinding 
+                                                Converter="{StaticResource IntegerToVisibilityMultiConverterForDelete}">
+                                                <Binding 
+                                                    Path="Items" 
+                                                    ElementName="testSteps"/>
+                                                <Binding 
+                                                    Path="."/>
+                                            </MultiBinding>
+                                        </CheckBox.Visibility>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <!--<GridViewColumn 
+                            Width="30">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel 
+                                        Orientation="Horizontal">
+                                        <Button 
+                                            Style="{DynamicResource NoChromeButton}" 
+                                            Click="DeleteStep_Click" 
+                                            Cursor="Hand" 
+                                            ToolTip="Delete test step">
+                                            <Image 
+                                                Width="16" 
+                                                Height="16" 
+                                                Source="/Images/appbar.delete.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>-->
+                        <GridViewColumn 
+                            Header="Move Step" 
+                            Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel 
+                                        Orientation="Horizontal">
+                                        <Button 
+                                            Style="{DynamicResource NoChromeButton}" 
+                                            Click="MoveStepUp_Click" 
+                                            Cursor="Hand">
+                                            <Button.Visibility>
+                                                <MultiBinding 
+                                                    Converter="{StaticResource IntegerToVisibilityMultiConverterForUpArrow}">
+                                                    <Binding 
+                                                        Path="Items" 
+                                                        ElementName="testSteps"/>
+                                                    <Binding 
+                                                        Path="."/>
+                                                </MultiBinding>
+                                            </Button.Visibility>
+                                            <Image 
+                                                Width="32" 
+                                                Height="32" 
+                                                Source="/Images/appbar.chevron.up.png"/>
+                                        </Button>
+                                        <Button 
+                                            Style="{DynamicResource NoChromeButton}" 
+                                            Click="MoveStepDown_Click" 
+                                            Cursor="Hand">
+                                            <Button.Visibility>
+                                                <MultiBinding 
+                                                    Converter="{StaticResource IntegerToVisibilityMultiConverterForDownArrow}">
+                                                    <Binding 
+                                                        Path="Items" 
+                                                        ElementName="testSteps"/>
+                                                    <Binding 
+                                                        Path="."/>
+                                                </MultiBinding>
+                                            </Button.Visibility>
+                                            <Image 
+                                                Width="32" 
+                                                Height="32" 
+                                                Source="/Images/appbar.chevron.down.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn 
+                            Header="Insert" 
+                            Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel 
+                                        Orientation="Horizontal">
+                                        <Button 
+                                            Style="{DynamicResource NoChromeButton}" 
+                                            Cursor="Hand" 
+                                            Click="InsertStep_Click" 
+                                            ToolTip="Insert new test step below" 
+                                            Margin="5,0,0,0">
+                                            <Image 
+                                                Width="16" 
+                                                Height="16" 
+                                                Source="/Images/add-icon.png"/>
+                                        </Button>
+                                        <Button 
+                                            HorizontalAlignment="Right"
+                                            Style="{DynamicResource NoChromeButton}" 
+                                            Cursor="Hand" 
+                                            Click="InsertSharedStep_Click" 
+                                            ToolTip="Insert shared test step below" 
+                                            Margin="15,0,0,0">
+                                            <Image 
+                                                Width="16" 
+                                                Height="16" 
+                                                Source="/Images/add-icon.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn 
+                            Header="Program" 
+                            DisplayMemberBinding="{Binding Program}"/>
+                        <GridViewColumn 
+                            Header="Entity" 
+                            DisplayMemberBinding="{Binding Entity}"/>
+                        <GridViewColumn 
+                            Header="Element" 
+                            DisplayMemberBinding="{Binding Element}"/>
+                        <GridViewColumn 
+                            Header="Action" 
+                            DisplayMemberBinding="{Binding Action}"/>
+                        <GridViewColumn 
+                            Header="Data" 
+                            DisplayMemberBinding="{Binding Data}"/>
+                        <!--<GridViewColumn Header="GVar" DisplayMemberBinding="{Binding SaveVariable}" Width="50"/>-->
+                        <GridViewColumn 
+                            Header="Note" 
+                            DisplayMemberBinding="{Binding Note}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+        <Grid 
+            Grid.Row="4"
+            Margin="10,0">
+            <Button 
+                x:Name="deleteSteps" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Delete Steps" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Width="110" 
+                Click="DeleteSteps_Click"/>
+            <Label 
+                x:Name="lastRun" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Margin="120,0,0,0"
+                Content="Last Updated"/>
+            <CheckBox
+                x:Name="RunInjectionTest"
+                Content="Run string injection test with characters"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,14,258,8"
+                FontSize="14" 
+                IsChecked="True"/>
+            <TextBox
+                x:Name="RunInjectionTestString"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,14,124,8"
+                Width="131"/>
+            <Button 
+                x:Name="run" 
+                Style="{StaticResource actionButtonStyle}"
+                Content="Test Runner" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center" 
+                Width="110" 
+                Click="run_Click"/>
+        </Grid>
+    </Grid>
+</local:EditorPage>

@@ -1,0 +1,86 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+
+<#@ output extension=".cs" #>
+<#@ assembly name="EnvDte" #>
+<#@ assembly Name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+    string nameSpace = "FTC.OLA.Automation.Pages";
+	EnvDTE.DTE dte = (this.Host as IServiceProvider).GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+    EnvDTE.Project pageProject = null;
+    foreach(EnvDTE.Project pj in dte.Solution.Projects)
+    {
+        if (pj.Name == nameSpace)
+        {
+            pageProject = pj;   
+            break;
+        }
+    }
+
+#>
+// GENERATED CODE: DO NOT EDIT!
+// See the associated .tt file for generation details
+using <#=nameSpace#>;
+
+namespace PageMinders
+{
+	public partial class <#=nameSpace.Replace(".Automation.Pages", String.Empty).Replace('.', '_')#>Minder
+	{
+<#
+    if(pageProject != null)
+    {
+        this.ListOfPageClassesInNameSpace(pageProject.CodeModel.CodeElements, pageProject.Name.Split('.').ToList()).ForEach( className =>
+        {
+            string backingVariable = "_" + Char.ToLowerInvariant(className[0]) + className.Substring(1);
+        #>
+
+            private <#=className#> <#=backingVariable#>;
+
+            public <#=className#> <#=className#>
+            {
+                get
+                {
+                    if (<#=backingVariable#> == null) <#=backingVariable#> = new <#=className#>(Driver);
+                    return <#=backingVariable#>;
+                }
+            }
+        <#
+        });
+    }
+#>
+	}
+}
+
+<#+
+	List<string> ListOfPageClassesInNameSpace(EnvDTE.CodeElements codeElements, List<string> projectNameElements)
+    {
+        List<string> classNames = new List<string>();
+
+        foreach (EnvDTE.CodeElement element in codeElements)
+            if (element.Kind == EnvDTE.vsCMElement.vsCMElementNamespace && element.Name == projectNameElements[0])
+            {
+                EnvDTE.CodeNamespace ns = element as EnvDTE.CodeNamespace;
+                if(element.Name == "Pages")
+                {
+                    foreach (EnvDTE.CodeElement member in ns.Members)
+                    {
+                        if (member.Kind == EnvDTE.vsCMElement.vsCMElementClass)
+                        {
+                            EnvDTE.CodeClass klass= (EnvDTE.CodeClass)member;
+                            if(!klass.IsAbstract && klass.Name.Contains("Page")) classNames.Add(member.Name);
+                        }
+                    }
+                }
+                else
+                {
+                    classNames.AddRange(ListOfPageClassesInNameSpace(ns.Members, projectNameElements.Skip(1).ToList()));
+                }
+        }
+
+        return classNames;
+	}
+#>

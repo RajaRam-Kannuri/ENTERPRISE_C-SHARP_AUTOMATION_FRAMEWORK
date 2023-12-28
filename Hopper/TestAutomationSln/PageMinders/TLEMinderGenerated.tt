@@ -1,0 +1,92 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+
+<#@ output extension=".cs" #>
+<#@ assembly name="EnvDte" #>
+<#@ assembly Name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+// GENERATED CODE: DO NOT EDIT!
+// See the associated .tt file for generation details
+using AutomationFramework;
+using TLE.Automation.Pages;
+
+namespace PageMinders
+{
+	public partial class TLEMinder
+	{
+<#
+    this.ListOfPageClasses().ForEach( className =>
+    {
+        string backingVariable = "_" + Char.ToLowerInvariant(className[0]) + className.Substring(1);
+    #>
+
+        private <#=className#> <#=backingVariable#>;
+
+        public <#=className#> <#=className#>
+        {
+            get
+            {
+                if (<#=backingVariable#> == null) <#=backingVariable#> = new <#=className#>(Driver);
+                return <#=backingVariable#>;
+            }
+        }
+    <#
+    });
+#>
+	}
+}
+
+
+<#+
+	List<string> ListOfPageClasses()
+	{
+		EnvDTE.DTE dte = (this.Host as IServiceProvider).GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+        List<string> classNames = new List<string>();
+        EnvDTE.Project pageProject = null;
+        foreach(EnvDTE.Project pj in dte.Solution.Projects)
+        {
+            if (pj.Name == "TLE.Automation.Pages")
+            {
+                pageProject = pj;   
+                break;
+            }
+        }
+
+        if (pageProject == null) return classNames;
+
+        foreach (EnvDTE.CodeElement element in pageProject.CodeModel.CodeElements)
+        {
+            if (element.Kind == EnvDTE.vsCMElement.vsCMElementNamespace && element.Name == "TLE")
+            {
+                EnvDTE.CodeNamespace ns = element as EnvDTE.CodeNamespace;
+                foreach (EnvDTE.CodeElement space in ns.Members)
+                {
+                    if (space.Kind == EnvDTE.vsCMElement.vsCMElementNamespace && space.Name == "Automation")
+                    {
+                        EnvDTE.CodeNamespace ns2 = space as EnvDTE.CodeNamespace;
+                        foreach (EnvDTE.CodeElement space2 in ns2.Members)
+                        {
+                            if (space2.Kind == EnvDTE.vsCMElement.vsCMElementNamespace && space2.Name == "Pages")
+                            {
+                                EnvDTE.CodeNamespace ns3 = space2 as EnvDTE.CodeNamespace;
+                                foreach (EnvDTE.CodeElement element3 in ns3.Members)
+                                {
+                                    if (element3.Kind == EnvDTE.vsCMElement.vsCMElementClass)
+                                    {
+                                        EnvDTE.CodeClass klass= (EnvDTE.CodeClass)element3;
+                                        if(!klass.IsAbstract && klass.Name.Contains("Page")) classNames.Add(element3.Name);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return classNames;
+	}
+#>
